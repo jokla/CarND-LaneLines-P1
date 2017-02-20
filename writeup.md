@@ -1,26 +1,12 @@
 #**Finding Lane Lines on the Road** 
 
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
-
-working with images and first two videos,
-failing with challenge
-
-TODO:
-- Do not considere orizontal lines in hought transformation
-- improve ROI, it is too big on the y
-- write report
 
 
 ---
 
 **Finding Lane Lines on the Road**
 
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
+The goal of this project is to make a pipeline that finds lane lines on the road.
 
 
 [//]: # (Image References)
@@ -40,6 +26,14 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
 ![alt text][image1]
+
+* Convert the color image in grayscale
+* Apply Gaussian smoothing
+* Use Canny for edge detection
+* Define ROI to consider only the road
+* Run Hough transform to detect lines
+
+
 
 
 ###2. Identify potential shortcomings with your current pipeline

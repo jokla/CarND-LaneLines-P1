@@ -4,7 +4,7 @@
 [//]: # (Image References)
 
 [image1]: ./examples/grayscale.jpg "Grayscale"
-[original]: ./test_images/solidWhiteRight.jpg
+[original]: ./test_images/solidWhiteRight.jpg =250x
 
 ---
 # Overview:

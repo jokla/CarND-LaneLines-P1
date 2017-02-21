@@ -29,7 +29,7 @@ I will use the following picture to show you all the steps:
 <img src="./img_doc/original.png" width="360" alt="Combined Image" />
 
 #### Color selection   
-At this step the pixels that were above the thresholds have been retained, and pixels below the threshold have been blacked out. This color filtering allows to suppress non-yellow and non-white colors. This is the result:
+At this step, the pixels that were above the thresholds have been retained, and pixels below the threshold have been blacked out. This color filtering allows suppressing non-yellow and non-white colors. This is the result:
 
 <img src="./img_doc/mask_color.png" width="360" alt="Combined Image" />
 
@@ -40,20 +40,14 @@ The original image is converted in grayscale. In this way we have only one chann
 
 <img src="./img_doc/gray.png" width="360" alt="Combined Image" />
 
-#### Apply Gaussian smoothing:  
-Before running Canny, I applyied a [Gaussian smoothing](http://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html?highlight=gaussianblur#gaussianblur) which is essentially a way of suppressing noise and spurious gradients by averaging.   
 
-<img src="./img_doc/gray.png" width="360" alt="Combined Image" />
-
-#### Use Canny for edge detection   
-The Canny allows to detect the edges in the images:
+#### Use Canny for edge detection 
+Before running Canny, I applied a [Gaussian smoothing](http://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html?highlight=gaussianblur#gaussianblur) which is essentially a way of suppressing noise and spurious gradients by averaging. The Canny allows detecting the edges in the images. To improve the result, I also used the OpenCV function `dilate` and `erode`.
 
 <img src="./img_doc/canny.png" width="360" alt="Combined Image" />
 
-To improve the result, I also used the opencv function `dilate` and `erode`.
-
 ### Merge Canny and Color Selection
-In some cases the Canny edge detector fails to find the lines. For example, when there is not enough constrast between the ashalt and the line, as in the challenge video. The color selection, on the other hand, doesn't have this problem. For this reason I decided to merge the result of Canny and color detector:   
+In some cases, the Canny edge detector fails to find the lines. For example, when there is not enough contrast between the asphalt and the line, as in the challenge video. The color selection, on the other hand, doesn't have this problem. For this reason, I decided to merge the result of Canny and color detector:   
 
 <img src="./img_doc/merge.png" width="360" alt="Combined Image" />
 
@@ -63,20 +57,20 @@ I defined a left and right Region Of Interest (ROI) based on the image size. Sin
 <img src="./img_doc/roi.png" width="360" alt="Combined Image" />
 
 #### Run Hough transform to detect lines  
-Thanks to the Hough transform, it is possible to detect lines in the images. At this step, I only considered the line with a slope between 20 and 90 degrees. In this way I can get rid of horizontal lines. This is the result applyed to the original image:
+Thanks to the Hough transform, it is possible to detect lines in the images. At this step, I only considered the line with a slope between 20 and 90 degrees. In this way, I can get rid of horizontal lines. This is the result applied to the original image:
 <img src="./img_doc/hough.png" width="360" alt="Combined Image" />
 
 
 #### Compute lines
-Now I need to average/extrapolate the result of the hough transorm and draw the two lines onto the image. For this I used the function  `fitLine`, after having extrapolated the points  from the previuos result with the opencv function `findNonZero`. I did this two times, once for the right line and another time for the left line. As result I had the slope of the lines, and I could draw them onto the original picture:   
+Now I need to average/extrapolate the result of the Hough transform and draw the two lines onto the image. I used the function  `fitLine`, after having extrapolated the points from the previous result with the OpenCV function `findNonZero`. I did this two times, once for the right line and another time for the left line. As a result, I had the slope of the lines, and I could draw them onto the original picture:   
 
 <img src="./img_doc/final.png" width="360" alt="Combined Image" />
 
 ## Results:
-
+Here some results on test videos provided by Udacity:
 ### Pictures
 Here some results on test images provided by Udacity:   
-<img src="./img_doc/final.png" width="360" alt="Combined Image" /> <img src="./img_doc/result1.png" width="340" alt="Combined Image" />    
+<img src="./img_doc/final.png" width="360" alt="Combined Image" /> <img src="./img_doc/result1.png" width="360" alt="Combined Image" />    
 <img src="./img_doc/result2.png" width="360" alt="Combined Image" /> <img src="./img_doc/result3.png" width="360" alt="Combined Image" />   
 <img src="./img_doc/result4.png" width="360" alt="Combined Image" />     <img src="./img_doc/result5.png" width="360" alt="Combined Image" />        
 
@@ -84,18 +78,30 @@ Here some results on test images provided by Udacity:
 ![](./img_doc/white.gif) 
 ![](./img_doc/yellow.gif)
 
+#### Optional challenge:
+While I got a satisfactory result on the first two video provided by Udacity, it was not the case for the challenge video. In the challenge video we can identify more difficulties:
+* The color of the asphalt became lighter at a certain point. The Canny edge detector is not able to find the line using the grayscale image (where we lose information about the color)
+* The car is driving on a curving road.
+* There are some shadows due to some trees  
+
+To overcome this problems I introduced the color mask, resized the ROI and merged the result with the Canny edge detector. This is the result: 
+
+![](./img_doc/extra.gif) 
 
 
 ###2. Identify potential shortcomings with your current pipeline
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+* This approach would not work properly:
+    * if the camera is placed at a different position
+    * if other vehicles in front are occluding the view
+    * if one or more line are missing
+    * at different weather and light condition (fog, rain, or at night)
 
 
 ###3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be to:
 
-Another potential improvement could be to ...
+* Update the ROI mask dynamically
+* Perform a segmentation of the road
+* If one line is not detected, estimate the new slope using the previous estimation and the other line detection

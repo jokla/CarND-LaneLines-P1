@@ -76,9 +76,9 @@ Now I need to average/extrapolate the result of the hough transorm and draw the 
 
 ### Pictures
 Here some results on test images provided by Udacity:   
-<img src="./img_doc/final.png" width="360" alt="Combined Image" /> <img src="./img_doc/result1.png" width="360" alt="Combined Image" /> <img src="./img_doc/result2.png" width="360" alt="Combined Image" />   
-
-<img src="./img_doc/result3.png" width="360" alt="Combined Image" />  <img src="./img_doc/result4.png" width="360" alt="Combined Image" />     <img src="./img_doc/result5.png" width="360" alt="Combined Image" />      
+<img src="./img_doc/final.png" width="360" alt="Combined Image" /> <img src="./img_doc/result1.png" width="340" alt="Combined Image" />    
+<img src="./img_doc/result2.png" width="360" alt="Combined Image" /> <img src="./img_doc/result3.png" width="360" alt="Combined Image" />   
+<img src="./img_doc/result4.png" width="360" alt="Combined Image" />     <img src="./img_doc/result5.png" width="360" alt="Combined Image" />        
 
 ### Videos
 ![](./img_doc/white.gif) 

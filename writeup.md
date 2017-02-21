@@ -10,8 +10,8 @@
 
 The goal of this project is to make a pipeline that finds lane lines on the road using Python and OpenCV.
 
+<img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />    <img src="laneLines_thirdPass.jpg" width="360" alt="Combined Image" />
 
-![](./test_images/solidWhiteRight.jpg)
 
 ---
 

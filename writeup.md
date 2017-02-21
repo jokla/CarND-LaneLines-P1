@@ -57,7 +57,7 @@ I defined a left and right trapezoidal Region Of Interest (ROI) based on the ima
 <img src="./img_doc/roi.png" width="360" alt="Combined Image" />
 
 #### Run Hough transform to detect lines  
-The Hough transform is used to detect lines in the images. At this step, I applied a slope filter, so that I can get rid of horizontal and vertical lines. This is the result:
+The Hough transform is used to detect lines in the images. At this step, I applied a slope filter, so that I can get rid of horizontal and vertical lines. This is the result:   
 <img src="./img_doc/hough.png" width="360" alt="Combined Image" />
 
 
@@ -83,16 +83,29 @@ Here some results on test videos provided by Udacity:
 You can find the video files here: [video1](./yellow.mp4), [video2](./white.mp4).
 
 #### Optional challenge:
+
 While I got a satisfactory result on the first two video provided by Udacity, it was not the case for the challenge video. In the challenge video we can identify more difficulties:
 * The color of the asphalt became lighter at a certain point. The Canny edge detector is not able to find the line using the grayscale image (where we lose information about the color)
 * The car is driving on a curving road.
 * There are some shadows due to some trees  
 
-To overcome this problems I introduced the color mask, resized the ROI and merged the result with the Canny edge detector. This is the result: 
+To overcome this problems I introduced the color mask and resized the ROI. This is the result, using only the color mask (without the canny detection): 
 
 ![](./img_doc/extra.gif)  
 
-You can find the video files here: [video_challenge](./extra.mp4)
+You can find the video files here: [video_challenge](./extra.mp4)   
+
+In fact, if we analize the steps using a shapshot from the challenge video, we can notice that the Canny detector is not very useful:   
+
+<img src="./img_doc/original_challenge.png" width="360" alt="Combined Image" /> <img src="./img_doc/canny_challenge.png" width="360" alt="Combined Image" />
+
+while the color mask is giving a better result:   
+
+<img src="./img_doc/color_challenge.png" width="360" alt="Combined Image" />
+  
+This is due to the fact that we lose valuable color information when we convert in grayscale and because the Canny operator find edges when we have shadows.   
+
+<img src="./img_doc/gray_challenge.png" width="360" alt="Combined Image" />
 
 
 ###2. Identify potential shortcomings with your current pipeline

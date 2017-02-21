@@ -1,21 +1,24 @@
 #**Finding Lane Lines on the Road** 
 
 
-
----
-
-o
-The goal of this project is to make a pipeline that finds lane lines on the road.
-
-
 [//]: # (Image References)
 
 [image1]: ./examples/grayscale.jpg "Grayscale"
+[original]: .test_images/solidWhiteRight.jpg
+
+---
+# Overview:
+
+The goal of this project is to make a pipeline that finds lane lines on the road using Python and OpenCV.
+
+
+![alt text][original]
 
 ---
 
 ### Reflection
 
+###1. Describe your pipeline.
 
 ![alt text][image1]
 

@@ -11,7 +11,7 @@
 The goal of this project is to make a pipeline that finds lane lines on the road using Python and OpenCV.
 
 
-![](./test_images/solidWhiteRight.jpg =250x)
+![](./test_images/solidWhiteRight.jpg)
 
 ---
 

@@ -29,7 +29,7 @@ I will use the following picture to show you all the steps:
 <img src="./img_doc/original.png" width="360" alt="Combined Image" />
 
 #### Color selection   
-At this step, the pixels that were above the thresholds have been retained, and pixels below the threshold have been blacked out. This color filtering allows suppressing non-yellow and non-white colors. This is the result:
+Firstly, I applied a color filtering to suppress non-yellow and non-white colors. The pixels that were above the thresholds have been retained, and pixels below the threshold have been blacked out.  This is the result:
 
 <img src="./img_doc/mask_color.png" width="360" alt="Combined Image" />
 
@@ -46,7 +46,7 @@ Before running [Canny](http://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans
 
 <img src="./img_doc/canny.png" width="360" alt="Combined Image" />
 
-### Merge Canny and Color Selection
+#### Merge Canny and Color Selection
 In some cases, the Canny edge detector fails to find the lines. For example, when there is not enough contrast between the asphalt and the line, as in the challenge video. The color selection, on the other hand, doesn't have this problem. For this reason, I decided to merge the result of Canny and color detection:   
 
 <img src="./img_doc/merge.png" width="360" alt="Combined Image" />
@@ -57,12 +57,12 @@ I defined a left and right trapezoidal Region Of Interest (ROI) based on the ima
 <img src="./img_doc/roi.png" width="360" alt="Combined Image" />
 
 #### Run Hough transform to detect lines  
-The Hough transform is used to detect lines in the images. At this step, I only considered the line with a slope between 20 and 90 degrees. In this way, I can get rid of horizontal and vertical lines. This is the result applied onto the original image:
+The Hough transform is used to detect lines in the images. At this step, I applied a slope filter, so that I can get rid of horizontal and vertical lines. This is the result:
 <img src="./img_doc/hough.png" width="360" alt="Combined Image" />
 
 
 #### Compute lines
-Now I need to average/extrapolate the result of the Hough transform and draw the two lines onto the image. I used the function  `fitLine`, after having extrapolated the points from the previous result with the OpenCV function `findNonZero`. I did this two times, once for the right line and another time for the left line. As a result, I had the slope of the lines, and I could draw them onto the original picture:   
+Now I need to average/extrapolate the result of the Hough transform and draw the two lines onto the image. I used the function  [`fitLine`](http://docs.opencv.org/2.4/modules/imgproc/doc/structural_analysis_and_shape_descriptors.html#fitline), after having extrapolated the points from the previous result with the OpenCV function `findNonZero`. I did this two times, once for the right line and another time for the left line. As a result, I got the slope of the lines, and I could draw them onto the original picture:   
 
 <img src="./img_doc/final.png" width="360" alt="Combined Image" />
 

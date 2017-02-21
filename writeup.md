@@ -4,7 +4,6 @@
 [//]: # (Image References)
 
 [image1]: ./examples/grayscale.jpg "Grayscale"
-[original]: ./test_images/solidWhiteRight.jpg =250x
 
 ---
 # Overview:
@@ -12,7 +11,7 @@
 The goal of this project is to make a pipeline that finds lane lines on the road using Python and OpenCV.
 
 
-![alt text][original]
+![](./test_images/solidWhiteRight.jpg =250x)
 
 ---
 

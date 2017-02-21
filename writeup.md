@@ -12,18 +12,19 @@ The goal of this project is to make a pipeline that finds lane lines on the road
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />    <img src="laneLines_thirdPass.jpg" width="360" alt="Combined Image" />
 
-
+The pipeline will be tested on some images and videos.
 ---
 
 ## Reflection
 
 ###1. Describe your pipeline.
 
-I will use the following pictures to show you all the steps:  
+I will use the following picture to show you all the steps:  
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
-* Extract pixel with bright component using a filter  
+* Color selection
+ The pixels that were above the thresholds have been retained, and pixels below the threshold have been blacked out. This help to find the lines in the images, that usually have a brigter color than the road.
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
@@ -31,7 +32,8 @@ I will use the following pictures to show you all the steps:
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" /> 
 
-* Apply Gaussian smoothing   
+* Apply Gaussian smoothing:
+We'll also include Gaussian smoothing, before running Canny, which is essentially a way of suppressing noise and spurious gradients by averaging   
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 

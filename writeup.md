@@ -6,22 +6,29 @@
 [image1]: ./examples/grayscale.jpg "Grayscale"
 
 ---
-# Overview:
+## Overview:
 
-The goal of this project is to make a pipeline that finds lane lines on the road using Python and OpenCV.
+The goal of this project is to make a pipeline that finds lane lines on the road using Python and OpenCV. See an example:
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />    <img src="laneLines_thirdPass.jpg" width="360" alt="Combined Image" />
 
 
 ---
 
-### Reflection
+## Reflection
 
 ###1. Describe your pipeline.
 
-![alt text][image1]
+I will use the following pictures to show you all the steps:
+
+<img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
+
+* Extract pixel with bright component using a filter:
+<img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
 * Convert the color image in grayscale
+<img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" /> 
+
 * Apply Gaussian smoothing
 * Use Canny for edge detection
 * Define ROI to consider only the road

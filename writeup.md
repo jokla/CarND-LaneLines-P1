@@ -90,7 +90,9 @@ While I got a satisfactory result on the first two video provided by Udacity, it
 
 To overcome this problems I introduced the color mask, resized the ROI and merged the result with the Canny edge detector. This is the result: 
 
-![](./img_doc/extra.gif) 
+![](./img_doc/extra.gif)  
+
+You can find the video files here: [video_challenge](./extra.mp4)
 
 
 ###2. Identify potential shortcomings with your current pipeline

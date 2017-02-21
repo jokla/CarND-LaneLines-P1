@@ -51,7 +51,7 @@ In some cases, the Canny edge detector fails to find the lines. For example, whe
 
 <img src="./img_doc/merge.png" width="360" alt="Combined Image" />
 
-#### Region of Interest Mask
+#### Region Of Interest Mask
 I defined a left and right trapezoidal Region Of Interest (ROI) based on the image size. Since that the front facing camera is mounted in a fix position, we supposed here that the lane lines will always appear in the same general region of the image. 
  
 <img src="./img_doc/roi.png" width="360" alt="Combined Image" />
@@ -67,7 +67,7 @@ Now I need to average/extrapolate the result of the Hough transform and draw the
 <img src="./img_doc/final.png" width="360" alt="Combined Image" />
 
 ## Results:
-Here some results on test videos provided by Udacity:
+
 ### Pictures
 Here some results on test images provided by Udacity:   
 <img src="./img_doc/final.png" width="360" alt="Combined Image" /> <img src="./img_doc/result1.png" width="360" alt="Combined Image" />    
@@ -75,8 +75,12 @@ Here some results on test images provided by Udacity:
 <img src="./img_doc/result4.png" width="360" alt="Combined Image" />     <img src="./img_doc/result5.png" width="360" alt="Combined Image" />        
 
 ### Videos
+Here some results on test videos provided by Udacity:   
+
 ![](./img_doc/white.gif) 
 ![](./img_doc/yellow.gif)
+
+You can find the video files here: [video1](./yellow.mp4), [video2](./white.mp4).
 
 #### Optional challenge:
 While I got a satisfactory result on the first two video provided by Udacity, it was not the case for the challenge video. In the challenge video we can identify more difficulties:
@@ -94,16 +98,16 @@ To overcome this problems I introduced the color mask, resized the ROI and merge
 * This approach would not work properly:
     * if the camera is placed at a different position
     * if other vehicles in front are occluding the view
-    * if one or more line are missing
+    * if one or more lines are missing
     * at different weather and light condition (fog, rain, or at night)
 
 
 ###3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to:
+Some possible improvements:
 
 * Update the ROI mask dynamically
 * Perform a segmentation of the road
 * Using a better filter to smooth the current estimation, using the previous ones
-* If one line is not detected, estimate the new slope using the previous estimation and the other line detection
-* Use a moving-edges tracker for continuos lines
+* If a line is not detected, estimate the current slope using the previous estimations and the other line detection
+* Use a moving-edges tracker for the continuos lines

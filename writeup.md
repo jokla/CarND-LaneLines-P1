@@ -23,29 +23,29 @@ I will use the following picture to show you all the steps:
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
-* Color selection
- The pixels that were above the thresholds have been retained, and pixels below the threshold have been blacked out. This help to find the lines in the images, that usually have a brigter color than the road.
+#### Color selection   
+The pixels that were above the thresholds have been retained, and pixels below the threshold have been blacked out. This help to find the lines in the images, that usually have a brighter color than the asphalt.
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
-* Convert the color image in grayscale  
+#### Convert the color image in grayscale  
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" /> 
 
-* Apply Gaussian smoothing:
-We'll also include Gaussian smoothing, before running Canny, which is essentially a way of suppressing noise and spurious gradients by averaging   
+#### Apply Gaussian smoothing:  
+Before running Canny, I applyied a [Gaussian smoothing](http://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html?highlight=gaussianblur#gaussianblur) which is essentially a way of suppressing noise and spurious gradients by averaging.   
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
-* Use Canny for edge detection   
+#### Use Canny for edge detection   
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
-* Define ROI to consider only the road   
+#### Define ROI to consider only the road   
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" /> 
 
-* Run Hough transform to detect lines  
+#### Run Hough transform to detect lines  
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 

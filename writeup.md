@@ -93,7 +93,7 @@ To overcome theses problems, I introduced the color mask and resized the ROI. Th
 
 ![](./img_doc/extra.gif)  
 
-You can find the video files here: [video_challenge](./extra.mp4)   
+You can find the video file here: [video_challenge](./extra.mp4)   
 
 In fact, if we analyze the steps using a snapshot from the challenge video, we can notice that the Canny detector is not very useful:   
 

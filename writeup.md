@@ -19,20 +19,27 @@ The goal of this project is to make a pipeline that finds lane lines on the road
 
 ###1. Describe your pipeline.
 
-I will use the following pictures to show you all the steps:
+I will use the following pictures to show you all the steps:  
 
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
-* Extract pixel with bright component using a filter:
+* Extract pixel with bright component using a filter  
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
-* Convert the color image in grayscale
+* Convert the color image in grayscale  
 <img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" /> 
 
-* Apply Gaussian smoothing
-* Use Canny for edge detection
-* Define ROI to consider only the road
-* Run Hough transform to detect lines
+* Apply Gaussian smoothing   
+<img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
+
+* Use Canny for edge detection   
+<img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
+
+* Define ROI to consider only the road   
+<img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" /> 
+
+* Run Hough transform to detect lines  
+<img src="./test_images/solidWhiteRight.jpg" width="360" alt="Combined Image" />
 
 
 

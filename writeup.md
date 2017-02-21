@@ -42,22 +42,22 @@ The original image is converted in grayscale. In this way we have only one chann
 
 
 #### Use Canny for edge detection 
-Before running Canny, I applied a [Gaussian smoothing](http://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html?highlight=gaussianblur#gaussianblur) which is essentially a way of suppressing noise and spurious gradients by averaging. The Canny allows detecting the edges in the images. To improve the result, I also used the OpenCV function `dilate` and `erode`.
+Before running [Canny](http://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/canny_detector/canny_detector.html), I applied a [Gaussian smoothing](http://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html?highlight=gaussianblur#gaussianblur) which is essentially a way of suppressing noise and spurious gradients by averaging. The Canny allows detecting the edges in the images. To improve the result, I also used the OpenCV function `dilate` and `erode`.
 
 <img src="./img_doc/canny.png" width="360" alt="Combined Image" />
 
 ### Merge Canny and Color Selection
-In some cases, the Canny edge detector fails to find the lines. For example, when there is not enough contrast between the asphalt and the line, as in the challenge video. The color selection, on the other hand, doesn't have this problem. For this reason, I decided to merge the result of Canny and color detector:   
+In some cases, the Canny edge detector fails to find the lines. For example, when there is not enough contrast between the asphalt and the line, as in the challenge video. The color selection, on the other hand, doesn't have this problem. For this reason, I decided to merge the result of Canny and color detection:   
 
 <img src="./img_doc/merge.png" width="360" alt="Combined Image" />
 
 #### Region of Interest Mask
-I defined a left and right Region Of Interest (ROI) based on the image size. Since that the front facing camera is mounted in a fix position, we supposed here that the lane lines will always appear in the same general region of the image. 
+I defined a left and right trapezoidal Region Of Interest (ROI) based on the image size. Since that the front facing camera is mounted in a fix position, we supposed here that the lane lines will always appear in the same general region of the image. 
  
 <img src="./img_doc/roi.png" width="360" alt="Combined Image" />
 
 #### Run Hough transform to detect lines  
-Thanks to the Hough transform, it is possible to detect lines in the images. At this step, I only considered the line with a slope between 20 and 90 degrees. In this way, I can get rid of horizontal lines. This is the result applied to the original image:
+The Hough transform is used to detect lines in the images. At this step, I only considered the line with a slope between 20 and 90 degrees. In this way, I can get rid of horizontal and vertical lines. This is the result applied onto the original image:
 <img src="./img_doc/hough.png" width="360" alt="Combined Image" />
 
 
@@ -104,4 +104,6 @@ A possible improvement would be to:
 
 * Update the ROI mask dynamically
 * Perform a segmentation of the road
+* Using a better filter to smooth the current estimation, using the previous ones
 * If one line is not detected, estimate the new slope using the previous estimation and the other line detection
+* Use a moving-edges tracker for continuos lines

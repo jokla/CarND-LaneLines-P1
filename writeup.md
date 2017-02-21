@@ -53,7 +53,8 @@ The Canny allows to detect the edges in the images:
 To improve the result, I also used the opencv function `dilate` and `erode`.
 
 ### Merge Canny and Color Selection
-In some cases the Canny edge detector fails to find the lines. For example, when there is not enough constrast between the ashalt and the line, as in the challenge video. The color selection, on the other hand, doesn't have this problem. For this reason I decided to merge the result of Canny and color detector:
+In some cases the Canny edge detector fails to find the lines. For example, when there is not enough constrast between the ashalt and the line, as in the challenge video. The color selection, on the other hand, doesn't have this problem. For this reason I decided to merge the result of Canny and color detector:   
+
 <img src="./img_doc/merge.png" width="360" alt="Combined Image" />
 
 #### Region of Interest Mask
@@ -67,13 +68,14 @@ Thanks to the Hough transform, it is possible to detect lines in the images. At 
 
 
 #### Compute lines
-Now I need to average/extrapolate the result of the hough transorm and draw the two lines onto the image. For this I used the function  `fitLine`, after having extrapolated the points  from the previuos result with the opencv function `findNonZero`. I did this two times, once for the right line and another time for the left line. As result I had the slope of the lines, and I could draw them onto the original picture:
+Now I need to average/extrapolate the result of the hough transorm and draw the two lines onto the image. For this I used the function  `fitLine`, after having extrapolated the points  from the previuos result with the opencv function `findNonZero`. I did this two times, once for the right line and another time for the left line. As result I had the slope of the lines, and I could draw them onto the original picture:   
+
 <img src="./img_doc/final.png" width="360" alt="Combined Image" />
 
 ## Results:
 
 ### Pictures
-Here some results on test images provided by Udacity:
+Here some results on test images provided by Udacity:   
 <img src="./img_doc/final.png" width="360" alt="Combined Image" /> <img src="./img_doc/result1.png" width="360" alt="Combined Image" /> <img src="./img_doc/result2.png" width="360" alt="Combined Image" />   
 
 <img src="./img_doc/result3.png" width="360" alt="Combined Image" />  <img src="./img_doc/result4.png" width="360" alt="Combined Image" />     <img src="./img_doc/result5.png" width="360" alt="Combined Image" />      

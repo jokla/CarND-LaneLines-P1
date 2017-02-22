@@ -86,7 +86,7 @@ You can find the video files here: [video1](./yellow.mp4), [video2](./white.mp4)
 
 While I got a satisfactory result on the first two videos provided by Udacity, it was not the case for the challenge video. In the challenge video we can identify more difficulties:
 * The color of the asphalt became lighter at a certain point. The Canny edge detector is not able to find the line using the grayscale image (where we lose information about the color)
-* The car is driving on a curving road.
+* The car is driving on a curving road
 * There are some shadows due to some trees  
 
 To overcome theses problems, I introduced the color mask and resized the ROI. This is the result, using only the color mask (without the canny detection): 
@@ -107,6 +107,20 @@ This is due to the fact that we lose valuable color information when we convert 
 
 <img src="./img_doc/gray_challenge.png" width="360" alt="Combined Image" />
 
+The right line is a little jumpy mainly because of the curve: the function fitline is trying to fit a line on a curvy lane. It would be useful to shrink the ROI in this case, but I preferred to keep the same ROI size as used for the first two videos.   
+
+
+#### Testing the pipeline on a YouTube Video:
+
+Just out of curiosity, I wanted to test the pipeline on a video extracted from Youtube (see the original video [here](https://www.youtube.com/watch?v=jwBaGY67olI) ).
+
+I noticed that the color selection was not working properly in this case, so I had to tune a little bit the thresholds values. This is the new result using both color selection and Canny:
+
+![](./img_doc/extra_test.gif)
+
+You can find the video file here: [video_challenge](./extra_test_result.mp4)   
+
+It would be wiser to transform the image in the HSV space and to apply the color selection, instead of doing it on the RGB images.
 
 ###2. Identify potential shortcomings with your current pipeline
 
@@ -121,6 +135,7 @@ This is due to the fact that we lose valuable color information when we convert 
 
 Some possible improvements:
 
+* Perform a color selection in the HSV space, instead of doing it in the RGB imagesThe right line is a little jumpy mainly because of the curve: the function fitline is trying to fit a line on a curvy line. It would be useful to shrink the ROI in this case, but I preferred to keep the same ROI size as used for the first two videos. 
 * Update the ROI mask dynamically
 * Perform a segmentation of the road
 * Using a better filter to smooth the current estimation, using the previous ones

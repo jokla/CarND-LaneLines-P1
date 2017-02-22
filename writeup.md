@@ -52,7 +52,7 @@ In some cases, the Canny edge detector fails to find the lines. For example, whe
 <img src="./img_doc/merge.png" width="360" alt="Combined Image" />
 
 #### Region Of Interest Mask
-I defined a left and right trapezoidal Region Of Interest (ROI) based on the image size. Since that the front facing camera is mounted in a fix position, we supposed here that the lane lines will always appear in the same general region of the image. 
+I defined a left and right trapezoidal Region Of Interest (ROI) based on the image size. Since that the front facing camera is mounted in a fix position, we supposed here that the lane lines will always appear in the same region of the image. 
  
 <img src="./img_doc/roi.png" width="360" alt="Combined Image" />
 
@@ -73,6 +73,9 @@ Here some results on test images provided by Udacity:
 <img src="./img_doc/final.png" width="360" alt="Combined Image" /> <img src="./img_doc/result1.png" width="360" alt="Combined Image" />    
 <img src="./img_doc/result2.png" width="360" alt="Combined Image" /> <img src="./img_doc/result3.png" width="360" alt="Combined Image" />   
 <img src="./img_doc/result4.png" width="360" alt="Combined Image" />     <img src="./img_doc/result5.png" width="360" alt="Combined Image" />        
+
+You can find the original pictures and the results in the folder `test_images`.
+
 
 ### Videos
 Here some results on test videos provided by Udacity:   
@@ -95,7 +98,9 @@ To overcome theses problems, I introduced the color mask and resized the ROI. Th
 
 You can find the video file here: [video_challenge](./extra.mp4)   
 
-In fact, if we analyze the steps using a snapshot from the challenge video, we can notice that the Canny detector is not very useful:   
+The right line is a little jumpy mainly because of the curve: the function `fitline` is trying to fit a line on a curvy lane. It would be useful to shrink the ROI in this case, but I preferred to keep the same ROI size used in the first two videos.
+
+If we analyze the steps using a snapshot from the challenge video, we can notice that the Canny detector is not very useful:   
 
 <img src="./img_doc/original_challenge.png" width="360" alt="Combined Image" /> <img src="./img_doc/canny_challenge.png" width="360" alt="Combined Image" />
 
@@ -103,11 +108,9 @@ while the color mask is able to detect the lines:
 
 <img src="./img_doc/color_challenge.png" width="360" alt="Combined Image" />
   
-This is due to the fact that we lose valuable color information when we convert in grayscale and because the Canny operator find edges when we have shadows.   
+Indeed, as you can see in the following picture, we lose valuable color information when we convert the image in grayscale. Moreover, the Canny operator find a lot of edges when we have shadows on the road.   
 
 <img src="./img_doc/gray_challenge.png" width="360" alt="Combined Image" />
-
-The right line is a little jumpy mainly because of the curve: the function fitline is trying to fit a line on a curvy lane. It would be useful to shrink the ROI in this case, but I preferred to keep the same ROI size as used for the first two videos.   
 
 
 #### Testing the pipeline on a YouTube Video:
@@ -118,13 +121,13 @@ I noticed that the color selection was not working properly in this case, so I h
 
 ![](./img_doc/extra_test.gif)
 
-You can find the video file here: [video_challenge](./extra_test_result.mp4)   
+You can find the video file here: [video_extra](./extra_test_result.mp4)   
 
 It would be wiser to transform the image in the HSV space and to apply the color selection, instead of doing it on the RGB images.
 
 ###2. Identify potential shortcomings with your current pipeline
 
-* This approach would not work properly:
+* This approach could not work properly:
     * if the camera is placed at a different position
     * if other vehicles in front are occluding the view
     * if one or more lines are missing
@@ -135,9 +138,9 @@ It would be wiser to transform the image in the HSV space and to apply the color
 
 Some possible improvements:
 
-* Perform a color selection in the HSV space, instead of doing it in the RGB imagesThe right line is a little jumpy mainly because of the curve: the function fitline is trying to fit a line on a curvy line. It would be useful to shrink the ROI in this case, but I preferred to keep the same ROI size as used for the first two videos. 
+* Perform a color selection in the HSV space, instead of doing it in the RGB images
 * Update the ROI mask dynamically
 * Perform a segmentation of the road
 * Using a better filter to smooth the current estimation, using the previous ones
-* If a line is not detected, estimate the current slope using the previous estimations and the other line detection
+* If a line is not detected, we could estimate the current slope using the previous estimations and/or the other line detection
 * Use a moving-edges tracker for the continuous lines
